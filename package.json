@@ -63,9 +63,9 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "next": "14.2.13",
-    "react": "^18.0.0",
-  "react-dom": "^18.0.0", 
     "prettier": "^3.3.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "turbo": "1.13.3-canary.3",
     "twitter-api-v2": "^1.17.2",
     "typescript": "^5.5.3"
@@ -73,5 +73,9 @@
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "8.1.0",
     "@typescript-eslint/parser": "8.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0"
   }
 }
