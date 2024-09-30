@@ -1,18 +1,24 @@
 {
-  "include": [".eslintrc.cjs", "prettier.config.mjs"],
+  "include": [
+    ".eslintrc.cjs",
+    "prettier.config.mjs",
+    ".next/types/**/*.ts",
+    "src/**/*"
+  ],
   "compilerOptions": {
     /* LANGUAGE COMPILATION OPTIONS */
-    "target": "ES2020",
+    "target": "ES2022",
     "lib": ["DOM", "DOM.Iterable", "ES2021"],
-    "module": "Node16",
-    "moduleResolution": "nodenext",
+    "module": "ESNext", // Cambiar a ESNext para la compatibilidad con el sistema moderno de módulos
+    "moduleResolution": "node", // Esto simplifica la resolución de módulos en Next.js
     "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
     "allowJs": true,
     "checkJs": true,
 
     /* EMIT RULES */
     "outDir": "./dist",
-    "noEmit": true, // TSUP takes care of emitting js for us, in a MUCH faster way
+    "noEmit": true, // Mantener esto ya que TSUP maneja la emisión
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
@@ -20,30 +26,34 @@
 
     /* TYPE CHECKING RULES */
     "strict": true,
-    // "noImplicitAny": true, // Included in "Strict"
-    // "noImplicitThis": true, // Included in "Strict"
-    // "strictBindCallApply": true, // Included in "Strict"
-    // "strictFunctionTypes": true, // Included in "Strict"
-    // "strictNullChecks": true, // Included in "Strict"
-    // "strictPropertyInitialization": true, // Included in "Strict"
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "useUnknownInCatchVariables": true,
-    "noUncheckedIndexedAccess": true, // TLDR - Checking an indexed value (array[0]) now forces type <T | undefined> as there is no confirmation that index exists
-    // THE BELOW ARE EXTRA STRICT OPTIONS THAT SHOULD ONLY BY CONSIDERED IN VERY SAFE PROJECTS
-    // "exactOptionalPropertyTypes": true, // TLDR - Setting to undefined is not the same as a property not being defined at all
-    // "noPropertyAccessFromIndexSignature": true, // TLDR - Use dot notation for objects if youre sure it exists, use ['index'] notaion if unsure
+    "noUncheckedIndexedAccess": true,
 
     /* OTHER OPTIONS */
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    // "emitDecoratorMetadata": true,
-    // "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "useDefineForClassFields": true
-  }
+    "useDefineForClassFields": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "preserve", // Puedes cambiar a "react-jsx" si estás utilizando React 17 o superior
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist", // Excluir la carpeta de distribución
+    ".next", // Excluir los archivos generados por Next.js
+    "coverage", // Excluir si usas herramientas de cobertura de código
+    "tests" // Excluir si tienes pruebas unitarias que no quieras incluir en la compilación principal
+  ]
 }

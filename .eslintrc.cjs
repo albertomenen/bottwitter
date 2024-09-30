@@ -1,50 +1,13 @@
-/** @type {import("eslint").Linter.Config} */
-const config = {
-  root: true,
-  parser: "@typescript-eslint/parser",
-  plugins: ["isaacscript", "import"],
+
+module.exports = {
   extends: [
-    "plugin:@typescript-eslint/recommended-type-checked",
-    "plugin:@typescript-eslint/stylistic-type-checked",
-    "plugin:prettier/recommended",
+    'next/core-web-vitals',
+    'plugin:@typescript-eslint/recommended',
+    'prettier'  // Añadir 'prettier' al final para deshabilitar las reglas conflictivas de ESLint
   ],
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    tsconfigRootDir: __dirname,
-    projectService: true,
-  },
-  overrides: [
-    // Template files don't have reliable type information
-    {
-      files: ["./cli/template/**/*.{ts,tsx}"],
-      extends: ["plugin:@typescript-eslint/disable-type-checked"],
-    },
-  ],
+  plugins: ['@typescript-eslint'],
   rules: {
-    // These off/not-configured-the-way-we-want lint rules we like & opt into
-    "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
-    ],
-    "@typescript-eslint/consistent-type-imports": [
-      "error",
-      { prefer: "type-imports", fixStyle: "inline-type-imports" },
-    ],
-    "import/consistent-type-specifier-style": ["error", "prefer-inline"],
-
-    // For educational purposes we format our comments/jsdoc nicely
-    "isaacscript/complete-sentences-jsdoc": "warn",
-    "isaacscript/format-jsdoc-comments": "warn",
-
-    // These lint rules don't make sense for us but are enabled in the preset configs
-    "@typescript-eslint/no-confusing-void-expression": "off",
-    "@typescript-eslint/restrict-template-expressions": "off",
-
-    // This rule doesn't seem to be working properly
-    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    // Define tus reglas personalizadas aquí si es necesario
   },
 };
 
-module.exports = config;
