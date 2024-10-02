@@ -1,11 +1,11 @@
 {
   "crons": [
     {
-      "path": "/api/tweet",
+      "path": "/api/gm",
       "schedule": "0 7 * * *"
     },
     {
-      "path": "/api/tweet",
+      "path": "/api/random",
       "schedule": "0 15 * * *"
     }
   ]
